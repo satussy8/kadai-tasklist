@@ -7,11 +7,19 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "tasks")
-public class Tasks {
+@NamedQueries({
+    @NamedQuery(
+        name = "getAllTasklist",
+        query = "SELECT m FROM Tasklist AS m ORDER BY m.id DESC"
+    )
+})
+@Table(name = "tasklist")
+public class Tasklist {
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
